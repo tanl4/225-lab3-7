@@ -3,10 +3,10 @@ pipeline {
 
     environment {
         DOCKER_CREDENTIALS_ID = 'roseaw-dockerhub'
-        DOCKER_IMAGE = 'cithit/dayam7'                                                                    //<------change this
+        DOCKER_IMAGE = 'cithit/tanl4'                                                                    //<------change this
         IMAGE_TAG = "build-${BUILD_NUMBER}"
-        GITHUB_URL = 'https://github.com/miamioh-dayam7/225-lab3-7.git'                                    //<------change this
-        KUBECONFIG = credentials('dayam7-225')                                                         //<------change this
+        GITHUB_URL = 'https://github.com/miamioh-tanl4/225-lab3-7.git'                                    //<------change this
+        KUBECONFIG = credentials('tanl4-225')                                                         //<------change this
     }
 
     stages {
@@ -71,7 +71,7 @@ pipeline {
                 sh 'docker pull public.ecr.aws/portswigger/dastardly:latest'
                 sh '''
                     docker run --user $(id -u) -v ${WORKSPACE}:${WORKSPACE}:rw \
-                    -e BURP_START_URL=http://10.48.10.197 \
+                    -e BURP_START_URL=http://10.48.10.190 \
                     -e BURP_REPORT_FILE_PATH=${WORKSPACE}/dastardly-report.xml \
                     public.ecr.aws/portswigger/dastardly:latest
                 '''
